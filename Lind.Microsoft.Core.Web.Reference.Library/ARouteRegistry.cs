@@ -11,8 +11,8 @@ namespace Lind.Microsoft.Core.Web.Reference.Library
         {
             builder.UseMvc(routes =>
             {
-                routes.MapRoute(name: "home-a", template: "Power/Two/{exponent:int}",
-                    defaults: new { controller = "A", action = "ToThePowerOfTwo" });
+                routes.MapRoute(name: "home-a", template: "ToThePower/{bse:int}/{power:int}",
+                    defaults: new { controller = "A", action = "ToThePower" });
             });
         }
     }

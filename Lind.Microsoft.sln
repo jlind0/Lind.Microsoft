@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lind.Microsoft.Core.Web.Ref
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lind.Microsoft.Core.Web.Reference.Library", "Lind.Microsoft.Core.Web.Reference.Library\Lind.Microsoft.Core.Web.Reference.Library.csproj", "{D471F4CB-D7FC-4061-8FA2-0B403FB14921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lind.Microsoft.Core.Web.Reference.Site2", "Lind.Microsoft.Core.Web.Reference.Site2\Lind.Microsoft.Core.Web.Reference.Site2.csproj", "{0303F7DD-26B2-4142-A67E-8F3C34F6D788}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{D471F4CB-D7FC-4061-8FA2-0B403FB14921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D471F4CB-D7FC-4061-8FA2-0B403FB14921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D471F4CB-D7FC-4061-8FA2-0B403FB14921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0303F7DD-26B2-4142-A67E-8F3C34F6D788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0303F7DD-26B2-4142-A67E-8F3C34F6D788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0303F7DD-26B2-4142-A67E-8F3C34F6D788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0303F7DD-26B2-4142-A67E-8F3C34F6D788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{9CFCC919-DC99-4099-9AC1-910520AD998C} = {7CFB3110-50AE-4476-A328-403C52D66C6D}
 		{8691D39F-94C8-48D4-8406-BE8E2E770508} = {9CFCC919-DC99-4099-9AC1-910520AD998C}
 		{D471F4CB-D7FC-4061-8FA2-0B403FB14921} = {9CFCC919-DC99-4099-9AC1-910520AD998C}
+		{0303F7DD-26B2-4142-A67E-8F3C34F6D788} = {9CFCC919-DC99-4099-9AC1-910520AD998C}
 	EndGlobalSection
 EndGlobal

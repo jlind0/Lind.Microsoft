@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Lind.Microsoft.Core.Web
 {
-    public class ExternalAssemblyRegistry<T>
+    public static class ExternalAssemblyRegistry
     {
         
     }
