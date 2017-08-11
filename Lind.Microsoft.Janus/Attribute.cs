@@ -68,10 +68,34 @@ namespace Lind.Microsoft.Janus
 
     public class JanusAttributeValue<T> : JanusNamespace, IIJanusAttributeValue<T>
     {
-        public T Value { set => throw new NotImplementedException(); }
+        public JanusAttributeValue(IJanusAttribute attr, T value = default(T))
+        {
+            attr.NotificationChange += Attr_NotificationChange;
+        }
 
-        public IJanusAttribute Attribute => throw new NotImplementedException();
+        private void Attr_NotificationChange(Uri instanceId, Uri attributeId, ChangeType changeType, object oldValue, object newValue)
+        {
+            if (attributeId == new Uri("http://janus.wwidew.net/type"))
+                this.IsDead = true;
+        }
+        private T value;
+        public T Value
+        {
+            get { if (!IsDead) return value; else throw new InvalidOperationException(); }
+            set { this.SetValue(ref this.value, value); }
+        }
 
-        public object ObjValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IJanusAttribute Attribute { get; private set; }
+
+        public object ObjValue { get { return this.Value; } set { this.Value = (T)value; } }
+        public override bool TryGetMember(GetMemberBinder binder, out object result)
+        {
+            
+            if (binder.Name.StartsWith("_"))
+            {
+                return ((DynamicObject)this.Attribute).TryGetMember(binder, out result);
+            }
+            return base.TryGetMember(binder, out result);
+        }
     }
 }
