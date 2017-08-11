@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
+using System.Linq.Expressions;
 
 namespace Lind.Microsoft.Janus
 {
@@ -25,11 +27,28 @@ namespace Lind.Microsoft.Janus
         public Type ValueType
         {
             get { return valueType; }
-            set { this.SetValue(ref valueType, value); }
+            private set { this.SetValue(ref valueType, value); }
         }
-        public JanusAttribute(Type valueType)
+        public JanusAttribute(Uri id, string name, Type valueType)
         {
             this.ValueType = valueType;
+            this.Id = id;
+            this.Name = name;
+        }
+        public override bool TryBinaryOperation(BinaryOperationBinder binder, object arg, out object result)
+        {
+            if(binder.Operation == ExpressionType.DivideAssign)
+            {
+                Type a = arg as Type;
+                if(a != null)
+                {
+                    this.ValueType = a;
+                    result = this;
+                    return true;
+                }
+            }
+            result = this;
+            return false;
         }
     }
     public interface IJanusAttributeValue : IJanusNamesapce
@@ -46,4 +65,13 @@ namespace Lind.Microsoft.Janus
         T Value { set; }
     }
     public interface IJanusAttributeValue<T> : IOJanusAttributeValue<T>, IIJanusAttributeValue<T> { }
+
+    public class JanusAttributeValue<T> : JanusNamespace, IIJanusAttributeValue<T>
+    {
+        public T Value { set => throw new NotImplementedException(); }
+
+        public IJanusAttribute Attribute => throw new NotImplementedException();
+
+        public object ObjValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    }
 }
